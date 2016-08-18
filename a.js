@@ -10,4 +10,4 @@ function sleepCheck (numHours) {
         return more;
     }
 }
-sleepCheck (10);
+sleepCheck (7);
