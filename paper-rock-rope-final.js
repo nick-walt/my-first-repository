@@ -1,3 +1,11 @@
+// Note from Kenny
+// Mostly this code is hard to read because your functions do multiple things
+// I point out in the comments below that each function should `Do one thing`
+// Here is Erics article on that:
+// https://medium.com/javascript-scene/the-single-biggest-mistake-programmers-make-every-day-62366b432308#.qiarq9wd2
+
+
+
 "use strict";
 
 // declare unchanging constants in global scope for use by all functions
@@ -13,6 +21,22 @@ var rock = "rock",
     no = "no";
 
 main();
+
+
+
+
+// Note from Kenny
+// I am having a hard time understanding this function.
+// See if you can split it out into multiple functions that
+// each `Do one thing`. You should have a function that gets the user choice
+// and only gets the userChoice, call it getUserChoice(). Its only job should
+// be to return the value of "rock", "paper" or "scissors". You should not be checking for "ties"
+// inside this function, that is the job of the main program loop.
+//
+// The retry() function logic does not need to be contained inside the getUserChoice()
+// function. Declare it globally, and call it only if the user inputs an
+// invalid choice. This seperate the retry() logic, from the logic of getUserChoice() making
+// them both easier to read and understand their jobs.
 
 function userChoice (tied) { // closure containing userInput() and retry()
     var get = "bugs Bunny";
@@ -54,6 +78,10 @@ function userChoice (tied) { // closure containing userInput() and retry()
     } return userInput(); // userInput() enclosed by userChoice()
 };
 
+// Note from Kenny
+// This func is good! it does only one thing.
+// More of your functions should be smaller like this.
+
 function computerChoice() { // this is the easiest function in the program!... too easy!
     var randomNumber = Math.random();
     if (randomNumber <= 0.24) {
@@ -66,6 +94,12 @@ function computerChoice() { // this is the easiest function in the program!... t
         return rope;
     }
 };
+
+// Note from Kenny
+// The logic inside this function could be simplified. Also, this function
+// almost follows the `Do one thing` rule, but it does 2 things.
+// It creates a string and decides the winner. Seperate it into 2 functions
+// that each `Do one thing`.
 
 // userChoice() and computerChoice() function results passed to compare() by main(), processed and passed back to main()
 function compare (user, computer) {
@@ -107,6 +141,14 @@ function compare (user, computer) {
         }
     }
 };
+
+
+// Note from Kenny
+// The main programs job is to keep track of the data, control the
+// flow of the program and use the rest of the functions to do this.
+// try to simplify this after you have modified the rest of the functions
+// to `Do one thing`. You may find that you need more functions that `Do one thing`
+// to keep the logic and flow of your program as simple as possible inside this function
 
 // Main program
 function main (tied) { // the main program needs to control overall flow between the functions due to the way the return statement returns the function result to the exact caller location and continues from there
