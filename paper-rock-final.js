@@ -47,8 +47,7 @@ function userChoice (tied) {
                         again = prompt ("Please enter either Yes or No").toLowerCase();
                         console.log ("count2 is " + count2);
                     }
-            }
-            return exited;
+            } return exited;
         } return retry();
     } return userInput();
 };
