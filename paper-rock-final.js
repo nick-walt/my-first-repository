@@ -1,7 +1,8 @@
 "use strict";
 
 // declare unchanging vars in global scope for use by all functions
-var rock = "rock",
+const 
+    rock = "rock",
     paper = "paper",
     scissors = "scissors",
     quit = "quit",
@@ -21,7 +22,7 @@ function userChoice (tied) {
         tied = prompt ("The result is a tie! Please choose again... rock, paper or scissors!").toLowerCase();
         get = tied;
     }
-    function userInput () { // capture tie result from compare() function. Could this be passed directly into an enclosed function's method?
+    function userInput() { // capture tie result from compare() function. Could this be passed directly into an enclosed function's method?
         for (var count1 = 0; count1 < 2; count1++) {
             if (get === rock) {
                 return get;
@@ -89,8 +90,8 @@ function compare (user, computer) {
     }
 };
 
-// Main program
-function main (tied) { // the main program needs to control overall flow between the functions due to the way the return statement returns the function result to the exact caller location and continues from there
+// Main program controls application flow
+function main (tied) {
     var user = "Bugs Bunny"; // function scope var needed because variables declared within if else are private!
     if (tied === true) { // if compare() returned a tie, rerun main and pass tie to userChoice()
         user = userChoice (tie);
